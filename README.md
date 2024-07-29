@@ -1,6 +1,6 @@
 Автор: Даниил Клишин
 Версия докемента: 1.0
-Дата обновления: 23.07.2024
+Дата обновления: 29.07.2024
 
 Привет, React-Native разработчик! В этом документы ты найдёшь некоторые готовые решения, которые используются в приложениях и некоторые FAQ.
 
@@ -194,9 +194,71 @@ function calculateWorkersData(allDaysInTable: TimeSheetDay[]) {
 17. [react-native-responsive-screen](https://www.npmjs.com/package/react-native-responsive-screen) - упаковка помогает делать интрефейс для разных размеров экранов. Её функции возвращают размеры в пикселях, принимая процент от размера экрана в параметрах. Поэтому лучше не использовать для View который внутри другого View.
 
 # Всякие готовые решения
+- [Some Redux (TSX)](https://github.com/Danik711/my-code-examples/tree/main/some-redux)
+
+  Файл показывает как можно сократить код в redux и не добавлять множество type checks, которые могут вызвать некоторые проблемы. 
+
+- [Axios Exmaple (TSX)](https://github.com/Danik711/my-code-examples/tree/main/axios-example)
+
+  Переходи по ссылке, чтобы получить файлы. Ниже это просто пример. Файл который используется для создания копии axios и пример использования API calls в приложениях. В папке есть файл который используетс для вызова API call. Он использует redux упаковку. Это рекомендуемый способ вызывов API calls  в React-Native прилодениях. На страницах где нужно вызвать API нужно есрользывать redux hooks APIs для взаимодействия с ними.
+
+  ```typescript
+  import { userRegisterApi } from "path_to_thunk_function";
+  import { useAppDispatch, useAppSelector } from "path_to_store";
+
+  export default function SomeComponent() {
+    const dispatch = useAppDispatch();
+    
+    function registerUser() {
+      try {
+        const res = await dispatch(
+            userRegisterApi(userObjApi)
+        )
+        .unwrap();
+
+        // Api is successful, parse the result
+
+      } catch (error: any) {
+        // Parse Error
+      }
+    }
+
+    return (
+      ...
+    );
+  } 
+  ``` 
 
 - [Bottom Slide Menu (TSX)](https://github.com/Danik711/my-code-examples/tree/main/bottom-slide-menu)
 
   Это всплывающее окно снизу которое отображает практически любые данные. Компонент принимает JSX в качестве
-  children. Вы можете менять у себя под свои нужды. **Обязательно проверьте зависимости!**
+  children. Вы можете менять код у себя под свои нужды. **Обязательно проверьте зависимости!**
+
+  Вызывайте функции **open** и **close** как вам удобно. Пример использывания:
+  ```typescript
+  import BottomSlidingMenu from "path_to_file/bottom-sliding-menu";
+
+  export default function SomeComponent() {
+    const bottomSlidingMenuRef = useRef<BottomSlidingMenu>(null);
+
+    function open() {
+      bottomSlidingMenuRef.current?.showBottomMenu();
+    }
+
+    function close() {
+      bottomSlidingMenuRef.current?.hideBottomMenu();
+    }
+
+    return (
+      <BottomSlidingMenu
+          ref={bottomSlidingMenuRef}
+          title={textsInApp["ru"].selectCity}
+      >
+          {
+              // Some UI
+          }
+      </BottomSlidingMenu>
+    );
+  }
+  ```
 ![Пример Меню](https://github.com/Danik711/my-code-examples/blob/main/bottom-slide-menu/bottom-sliding-menu.gif)
