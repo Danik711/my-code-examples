@@ -196,11 +196,11 @@ function calculateWorkersData(allDaysInTable: TimeSheetDay[]) {
 17. [react-native-responsive-screen](https://www.npmjs.com/package/react-native-responsive-screen) - упаковка помогает делать интрефейс для разных размеров экранов. Её функции возвращают размеры в пикселях, принимая процент от размера экрана в параметрах. Поэтому лучше не использовать для View который внутри другого View.
 
 # Всякие готовые решения
-- [Some Redux (TSX)](https://github.com/Danik711/my-code-examples/tree/main/some-redux)
+- [Some Redux (TS)](https://github.com/Danik711/my-code-examples/tree/main/some-redux)
 
   Файл показывает как можно сократить код в redux и не добавлять множество type checks, которые могут вызвать некоторые проблемы. 
 
-- [Axios Exmaple (TSX)](https://github.com/Danik711/my-code-examples/tree/main/axios-example)
+- [Axios Exmaple (TS)](https://github.com/Danik711/my-code-examples/tree/main/axios-example)
 
   Переходи по ссылке, чтобы получить файлы. Ниже это просто пример. Файл который используется для создания копии axios и пример использования API calls в приложениях. В папке есть файл который используетс для вызова API call. Он использует redux упаковку. Это рекомендуемый способ вызывов API calls  в React-Native прилодениях. На страницах где нужно вызвать API нужно есрользывать redux hooks APIs для взаимодействия с ними.
 
